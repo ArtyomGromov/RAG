@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  qdrant:
+    image: qdrant/qdrant
+    container_name: qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+
+  ragbot:
+    build: .
+    container_name: ragbot
+    depends_on:
+      - qdrant
+    env_file:
+      - .env          # Подключение .env-файла
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+volumes:
+  qdrant_data:

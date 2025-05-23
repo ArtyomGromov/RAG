@@ -1,0 +1,10 @@
+transformers==4.40.2
+fastapi
+python-multipart
+uvicorn[standard]
+python-telegram-bot==13.15
+requests
+sentence-transformers
+pdfminer.six
+qdrant-client
+
